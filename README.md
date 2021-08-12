@@ -6,7 +6,9 @@ You can automate your workflows to deploy to [Azure Container Instances](https:/
 
 Get started today with a [free Azure account](https://azure.com/free/open-source)!
 
-This repository contains [GitHub Action for Deploying to Azure Container Instances](/action.yml) to deploy to Azure Container Instances. It supports deploying your container image to an Azure Container Instance.
+This repository contains [GitHub Action for Deploying to Azure Container Instances](/action.yml) to deploy to Azure Container Instances. It supports deploying your container image to an Azure Container Instance. 
+
+__Note__: Currently this action supports deploying to azure container instances only if the __ip-Address__ of the container group is __public__. 
 
 The definition of this GitHub Action is in [action.yml](/action.yml).
 
@@ -119,7 +121,7 @@ jobs:
 
 ### Deploying a Container with Environment Variables and Command Line
 
-**NOTE**: Secure Environment Variables aren't masked by the Action so use them as Secrets if you want to hide them
+**NOTE**: The values of ```secure-environment-variables``` will not be shown in the properties of the Azure Container Instance, but **will** be shown in the logs of the GitHub Action unless you specify them as Secrets.
 
 ```yaml
 - uses: Azure/aci-deploy@v1
